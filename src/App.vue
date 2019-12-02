@@ -24,6 +24,15 @@ export default {
       todos: [],
     }
   },
+  //same as componentDidMount in React
+  created() {
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
+      .then(res => {
+        console.log('intial data', res.data)
+        this.todos = res.data
+      })
+      .catch(err => console.log(err))
+  },
   methods: {
     deleteTodo(id) {
       axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
@@ -32,7 +41,6 @@ export default {
           this.todos = this.todos.filter(todo => todo.id !== id)
         )
         .catch(err => console.log(err))
-      
     },
     addTodo(newTodo) {
       const { title, completed} = newTodo
@@ -44,15 +52,6 @@ export default {
         .catch(err => console.log(err))
     }
   },
-  //same as componentDidMount in React
-  created() {
-    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
-      .then(res => {
-        //console.log('data', res.data)
-        this.todos = res.data
-      })
-      .catch(err => console.log(err))
-  }
 }
 </script>
 
