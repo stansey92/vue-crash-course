@@ -1,22 +1,19 @@
 <template>
-  <div id="app">
-    <Header />
+  <div>
     <AddTodo v-on:add-todo="addTodo"/>
     <Todos v-bind:todos='todos' v-on:del-todo="deleteTodo"/>
   </div>
 </template>
 
 <script>
-import Todos from './components/Todos'
-import AddTodo from './components/AddTodo'
-import Header from './components/layout/Header'
+import Todos from './Todos'
+import AddTodo from './AddTodo'
 import axios from 'axios'
 
 export default {
-  name: 'app',
+  name: 'home',
   components: {
     Todos,
-    Header,
     AddTodo,
   },
   data() {
